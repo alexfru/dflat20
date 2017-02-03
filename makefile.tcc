@@ -1,0 +1,64 @@
+#-------------------------------------------------------------------
+#        D - F L A T   M A K E F I L E  -  Turbo C++ 1.01
+#-------------------------------------------------------------------
+
+all : memopad.exe memopad.hlp
+
+#------------------------------------------------
+# NOTE: Set DRIVE to match where you installed your compiler
+#------------------------------------------------
+DRIVE = c:\tc
+#-------------------------------------------------------------------
+#  Delete the TESTING macro to eliminate the Reload
+#  Help file selection on the Help menu.
+#-------------------------------------------------------------------
+TESTING = TESTING_DFLAT
+#-------------------------------------------------------------------
+#  This macro builds the full D-Flat system with all options enabled.
+#  Comment it out for a minimum system or selectively
+#  comment out the #defines at the top of dflat.h.
+#-------------------------------------------------------------------
+FULL = BUILD_FULL_DFLAT
+#-------------------------------------------------------------------
+
+MODEL = l
+#------------------------------------------------
+# NOTE: Delete the DEBUG and LINKDEBUG macros to 
+# build without debugging information in the .EXE
+#------------------------------------------------
+DEBUG = -v
+LINKDEBUG = /m /v
+#------------------------------------------------
+COMPILE = tcc $(DEBUG) -D$(TESTING) -D$(FULL) -DBCPP -c -d -m$(MODEL)
+LINK= tlink $(LINKDEBUG) $(DRIVE)\lib\c0$(MODEL) 
+LIBS= $(DRIVE)\lib\c$(MODEL)
+#------------------------------------------------
+
+.c.obj:
+    $(COMPILE) {$*.c }
+
+memopad.exe : memopad.obj dialogs.obj menus.obj dflat.lib
+    $(LINK) memopad dialogs menus,memopad.exe,memopad,dflat $(LIBS)
+
+dflat.lib :   window.obj video.obj message.obj                         \
+              mouse.obj console.obj textbox.obj listbox.obj            \
+              normal.obj config.obj menu.obj menubar.obj popdown.obj   \
+              rect.obj applicat.obj keys.obj sysmenu.obj editbox.obj   \
+              dialbox.obj button.obj fileopen.obj msgbox.obj           \
+              helpbox.obj log.obj lists.obj statbar.obj decomp.obj     \
+              combobox.obj pictbox.obj calendar.obj barchart.obj       \
+              clipbord.obj search.obj dfalloc.obj checkbox.obj         \
+              text.obj radio.obj box.obj spinbutt.obj  watch.obj       \
+              slidebox.obj direct.obj editor.obj 
+	del dflat.lib
+	tlib dflat @dflat.bld
+
+huffc.exe : huffc.obj htree.obj
+    $(LINK) huffc htree,$*.exe,$*,$(LIBS)
+
+fixhelp.exe : fixhelp.obj decomp.obj
+    $(LINK) fixhelp decomp,$*.exe,$*,$(LIBS)
+
+memopad.hlp : memopad.txt huffc.exe fixhelp.exe
+    huffc memopad.txt memopad.hlp
+    fixhelp memopad
