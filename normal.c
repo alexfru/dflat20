@@ -22,7 +22,7 @@ static int px = -1, py = -1;
 static int diff;
 static struct window dwnd = {DUMMY, NULL, NormalProc,
                                 {-1,-1,-1,-1}};
-static int *Bsave;
+static short *Bsave;
 static int Bht, Bwd;
 BOOL WindowMoving;
 BOOL WindowSizing;
@@ -974,7 +974,7 @@ static void SaveBorder(RECT rc)
 {
     RECT lrc;
     int i;
-    int *cp;
+    short *cp;
     Bht = RectBottom(rc) - RectTop(rc) + 1;
     Bwd = RectRight(rc) - RectLeft(rc) + 1;
     Bsave = DFrealloc(Bsave, (Bht + Bwd) * 4);
@@ -996,7 +996,7 @@ static void RestoreBorder(RECT rc)
     if (Bsave != NULL)    {
         RECT lrc;
         int i;
-        int *cp;
+        short *cp;
         lrc = rc;
         RectBottom(lrc) = RectTop(lrc);
         storevideo(lrc, Bsave);

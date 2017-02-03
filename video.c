@@ -6,8 +6,8 @@ BOOL ClipString;
 static BOOL snowy;
 
 static unsigned video_address;
-static int near vpeek(int far *vp);
-static void near vpoke(int far *vp, int c);
+static unsigned short near vpeek(unsigned short far *vp);
+static void near vpoke(unsigned short far *vp, unsigned short c);
 void movefromscreen(void *bf, int offset, int len);
 void movetoscreen(void *bf, int offset, int len);
 
@@ -133,8 +133,8 @@ void wputs(WINDOW wnd, void *s, int x, int y)
 	int x2 = x1;
 	int y1 = GetTop(wnd)+y;
     if (x1 < SCREENWIDTH && y1 < SCREENHEIGHT && isVisible(wnd))	{
-		int ln[200];
-		int *cp1 = ln;
+		short ln[200];
+		short *cp1 = ln;
 	    unsigned char *str = s;
 	    int fg = foreground;
     	int bg = background;
@@ -241,6 +241,8 @@ void scroll_window(WINDOW wnd, RECT rc, int d)
 
 static void near waitforretrace(void)
 {
+#ifdef __SMALLER_C__
+#else
 #ifndef WATCOM
 asm		mov		dx,3dah
 loop1:
@@ -259,6 +261,7 @@ asm		loopnz	loop3
 asm		sti
 asm		jz		loop1
 #endif
+#endif
 }
 
 void movetoscreen(void *bf, int offset, int len)
@@ -276,15 +279,15 @@ void movefromscreen(void *bf, int offset, int len)
 }
 
 
-static int near vpeek(int far *vp)
+static unsigned short near vpeek(unsigned short far *vp)
 {
-	int c;
+	unsigned short c;
 	waitforretrace();
 	c = *vp;
 	return c;
 }
 
-static void near vpoke(int far *vp, int c)
+static void near vpoke(unsigned short far *vp, unsigned short c)
 {
 	waitforretrace();
 	*vp = c;

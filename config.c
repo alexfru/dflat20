@@ -498,7 +498,7 @@ BOOL LoadConfig(void)
 				char path[64];
 				BuildFileName(path, DFlatApplication, ".cfg");
 	        	fclose(fp);
-				unlink(path);
+				remove(path);
             	strcpy(cfg.version, VERSION);
 			}
 			ConfigLoaded = TRUE;

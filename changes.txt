@@ -1,0 +1,49 @@
+Changes made to D-Flat version 20
+while adapting it for compilation with Smaller C.
+
+- Changed calls to unlink() to calls to remove(). Just to make
+  the code a bit more generic. No functional change.
+- Made flags, counters, etc modified by ISRs explicitly volatile
+  simply to show the intent. No functional change. If anything,
+  the code is a bit more correct with these volatiles.
+- Changed the backslash to the forward slash in include
+  directives, e.g.
+    #include <sys\types.h> -> #include <sys/types.h>
+    #include <sys\stat.h> -> #include <sys/stat.h>
+  This works with Borland/Turbo C/C++ in DOS just fine. Ditto
+  with Smaller C in DOS and Windows.
+- Inserted a space in a macro definition:
+    #define ALT_7      (0xfe+OFFSET) ->
+    #define ALT_7      (0xfe +OFFSET)
+  Many old compilers incorrectly (according to the C standard)
+  parse 0xfe+OFFSET as three tokens, whereas it should be parsed
+  as one token ("preprocessing number" token) and compilation
+  should fail because it doesn't represent a valid numeric
+  constant. This change is required for compilation with
+  Smaller C, which employs a better preprocessor (ucpp).
+- Changed a call to stat() to calls to fopen() and fclose().
+  stat() was originally used to see if a file exists. This makes
+  the code a bit more generic and lets us get away without
+  stat() in Smaller C's standard C library. Minimal functional
+  change.
+- Changed the location of the interrupt keyword in declarations.
+  This is required for compilation with Smaller C, which is not
+  as flexible as Borland/Turbo C/C++ w.r.t. the keyword
+  placement.
+- Changed calls to segread() and int86x() to calls to just
+  int86(). Segments aren't involved so there should be no
+  functional change but this allows for a simpler int86() than
+  int86x().
+- Changed several instances of int to short primarily in the
+  code that copies characters to and from the screen. This is
+  required for compilation with Smaller C, which defines int as
+  32-bit in the huge and unreal mode(l)s. No functional change.
+- Changed one C++ style comment (// comment) to ANSI C style
+  (/* comment */) since all other comments in D-Flat are ANSI C
+  style.
+- Checked the value returned by strchr() in KeyboardMsg(). Just
+  in case. Was found in code review, not because of some
+  observed malfunction. No functional change.
+- Checked the nm parameter for NULL in FindHelp() in fixhelp.c.
+  This avoids a NULL pointer dereference (and a crash) in the
+  fixhelp tool compiled for Windows and Linux.

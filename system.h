@@ -2,10 +2,14 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
+#ifdef __SMALLER_C__
+#include "scdos.h"
+#else
 #if MSC | WATCOM
 #include <direct.h>
 #else
 #include <dir.h>
+#endif
 #endif
 
 #define swap(a,b){int x=a;a=b;b=x;}
@@ -25,8 +29,8 @@
 #define MAXSAVES 50
 #define SCREENWIDTH  (peekb(0x40,0x4a) & 255)
 #define SCREENHEIGHT (isVGA() || isEGA() ? peekb(0x40,0x84)+1 : 25)
-#define clearBIOSbuffer() *(int far *)(MK_FP(0x40,0x1a)) = \
-		        	      *(int far *)(MK_FP(0x40,0x1c));
+#define clearBIOSbuffer() *(unsigned short far *)(MK_FP(0x40,0x1a)) = \
+		        	      *(unsigned short far *)(MK_FP(0x40,0x1c));
 #define waitforkeyboard() while ((keyportvalue & 0x80) == 0) \
 						  clearBIOSbuffer()
 /* ----- keyboard BIOS (0x16) functions -------- */

@@ -1,0 +1,14 @@
+-dosh
+-Wall
+-DBUILD_FULL_DFLAT
+-c -o ldflat.a
+window.c video.c message.c
+mouse.c console.c textbox.c listbox.c
+normal.c config.c menu.c menubar.c popdown.c
+rect.c applicat.c keys.c sysmenu.c editbox.c
+dialbox.c button.c fileopen.c msgbox.c
+helpbox.c log.c lists.c statbar.c decomp.c
+combobox.c pictbox.c calendar.c barchart.c
+clipbord.c search.c dfalloc.c checkbox.c
+text.c radio.c box.c spinbutt.c watch.c
+slidebox.c direct.c editor.c

@@ -1,3 +1,10 @@
+D-Flat has been adapted for compilation with the Smaller C compiler
+(https://github.com/alexfru/SmallerC). See compilin.txt on how to
+compile the D-Flat library and the MemoPad demo application for DOS
+with Smaller C.
+
+=======================================================
+
 February, 1995
 
 D-Flat Version 20

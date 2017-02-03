@@ -41,7 +41,7 @@ static int SliderTextProc(
         case PAINT:
             Percent = (int)p2;
             InsertPercent(GetText(wnd) ?
-                GetText(wnd) : SliderBoxDB.ctl[1].itext);
+                (char*)GetText(wnd) : SliderBoxDB.ctl[1].itext);
             GenericProc(wnd, PAINT, 0, 0);
             if (Percent >= 100)
                 SendMessage(GetParent(wnd),COMMAND,ID_CANCEL,0);

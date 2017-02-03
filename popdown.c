@@ -185,7 +185,7 @@ static void LBChooseMsg(WINDOW wnd, PARAM p1)
 			if (pwnd != NULL)	{
 				CurrentMenuSelection = p1;
     	        PostMessage(pwnd, COMMAND,
-        	        (ActivePopDown+(int)p1)->ActionId, 0); // p2 was p1
+        	        (ActivePopDown+(int)p1)->ActionId, 0); /* p2 was p1 */
 			}
         }
         else
@@ -211,13 +211,15 @@ static BOOL KeyboardMsg(WINDOW wnd, PARAM p1, PARAM p2)
             while (pd->SelectionTitle != NULL)    {
                 char *cp = strchr(pd->SelectionTitle,
                                 SHORTCUTCHAR);
-                int sc = tolower(*(cp+1));
-                if ((cp && sc == c) ||
-                        (a && sc == a) ||
-                            pd->Accelerator == c)    {
-                    PostMessage(wnd, LB_SELECTION, sel, 0);
-                    PostMessage(wnd, LB_CHOOSE, sel, TRUE);
-                    return TRUE;
+                if (cp) {
+                    int sc = tolower(*(cp+1));
+                    if ((cp && sc == c) ||
+                            (a && sc == a) ||
+                                pd->Accelerator == c)    {
+                        PostMessage(wnd, LB_SELECTION, sel, 0);
+                        PostMessage(wnd, LB_CHOOSE, sel, TRUE);
+                        return TRUE;
+                    }
                 }
                 pd++, sel++;
             }

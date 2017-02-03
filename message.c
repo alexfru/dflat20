@@ -6,7 +6,7 @@ static int px = -1, py = -1;
 static int pmx = -1, pmy = -1;
 static int mx, my;
 static int handshaking = 0;
-static BOOL CriticalError;
+static volatile BOOL CriticalError;
 BOOL AllocTesting = FALSE;
 jmp_buf AllocError;
 BOOL AltDown = FALSE;
@@ -36,19 +36,19 @@ static int MsgQueueCtr;
 
 static int lagdelay = FIRSTDELAY;
 
-static void (interrupt far *oldtimer)(void);
-static void (interrupt far *oldkeyboard)(void);
+static void interrupt (far *oldtimer)(void);
+static void interrupt (far *oldkeyboard)(void);
 
-static int keyportvalue;	/* for watching for key release */
+static volatile int keyportvalue;	/* for watching for key release */
 
 WINDOW CaptureMouse;
 WINDOW CaptureKeyboard;
 static BOOL NoChildCaptureMouse;
 static BOOL NoChildCaptureKeyboard;
 
-static int doubletimer = -1;
-static int delaytimer  = -1;
-static int clocktimer  = -1;
+static volatile int doubletimer = -1;
+static volatile int delaytimer  = -1;
+static volatile int clocktimer  = -1;
 char time_string[] = "         ";
 
 static WINDOW Cwnd;
@@ -56,7 +56,11 @@ static WINDOW Cwnd;
 static void interrupt far newkeyboard(void)
 {
 	keyportvalue = inp(KEYBOARDPORT);
+#ifdef __SMALLER_C__
+	callisr(oldkeyboard);
+#else
 	oldkeyboard();
+#endif
 }
 
 /* ------- timer interrupt service routine ------- */
@@ -68,7 +72,11 @@ static void interrupt far newtimer(void)
         countdown(delaytimer);
     if (timer_running(clocktimer))
         countdown(clocktimer);
+#ifdef __SMALLER_C__
+    callisr(oldtimer);
+#else
     oldtimer();
+#endif
 }
 
 static char ermsg[] = "Error accessing drive x";
@@ -87,6 +95,7 @@ int TestCriticalError(void)
 }
 
 /* ------ critical error interrupt service routine ------ */
+#ifndef __SMALLER_C__
 static void interrupt far newcrit(IREGS ir)
 {
     if (!(ir.ax & 0x8000))     {
@@ -95,6 +104,17 @@ static void interrupt far newcrit(IREGS ir)
     }
     ir.ax = 0;
 }
+#else
+static void interrupt far newcrit(struct INTREGS** ppRegs)
+{
+    struct INTREGS* pRegs = *ppRegs;
+    if (!(pRegs->eax & 0x8000))     {
+        ermsg[sizeof(ermsg) - 2] = (pRegs->eax & 0xff) + 'A';
+        CriticalError = TRUE;
+    }
+    pRegs->eax = 0;
+}
+#endif
 
 static void StopMsg(void)
 {

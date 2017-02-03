@@ -209,11 +209,16 @@ static void OpenPadWindow(WINDOW wnd, char *FileName)
 {
     static WINDOW wnd1 = NULL;
 	WINDOW wwnd;
-    struct stat sb;
     char *Fname = FileName;
     char *ermsg;
     if (strcmp(FileName, Untitled))    {
+#if 0
+        struct stat sb;
         if (stat(FileName, &sb))    {
+#else
+        FILE* fff;
+        if ((fff = fopen(FileName, "rb")) == NULL || (fclose(fff), 0)) {
+#endif
             ermsg = DFmalloc(strlen(FileName)+20);
             strcpy(ermsg, "No such file as\n");
             strcat(ermsg, FileName);
@@ -376,7 +381,7 @@ static void DeleteFile(WINDOW wnd)
                 char msg[30];
                 sprintf(msg, "Delete %s?", fn);
                 if (YesNoBox(msg))    {
-                    unlink(wnd->extension);
+                    remove(wnd->extension);
                     SendMessage(wnd, CLOSE_WINDOW, 0, 0);
                 }
             }

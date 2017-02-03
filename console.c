@@ -41,6 +41,8 @@ void SwapCursorStack(void)
 	}
 }
 
+#ifdef __SMALLER_C__
+#else
 #ifndef MSC
 #ifndef WATCOM
 #define ZEROFLAG 0x40
@@ -51,6 +53,7 @@ BOOL keyhit(void)
     geninterrupt(KEYBRD);
     return (_FLAGS & ZEROFLAG) == 0;
 }
+#endif
 #endif
 #endif
 
@@ -75,7 +78,7 @@ int getshift(void)
     return regs.h.al;
 }
 
-static int far *clk = MK_FP(0x40,0x6c);
+static volatile int far *clk = MK_FP(0x40,0x6c);
 /* ------- macro to wait one clock tick -------- */
 #define wait()          \
 {                       \

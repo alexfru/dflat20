@@ -7,6 +7,11 @@
 #define FIXHELP
 #include "helpbox.h"
 
+/* max() and min() may come from <stdlib.h> */
+#ifndef max
+#define max(a,b)        (((a) > (b)) ? (a) : (b))
+#endif
+
 static FILE *helpfp;
 static char hline [160];
 
@@ -40,6 +45,9 @@ int FindHelp(char *nm)
 {
 	int hlp = 0;
 	struct helps *thishelp = FirstHelp;
+	if (nm == NULL) {
+		return -1;
+	}
 	while (thishelp != NULL)	{
 		if (strcmp(nm, thishelp->hname) == 0)
 			break;
@@ -49,7 +57,7 @@ int FindHelp(char *nm)
 	return thishelp ? hlp : -1;
 }
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     char *cp;
 	int HelpCount = 0;

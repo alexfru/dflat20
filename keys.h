@@ -94,7 +94,7 @@
 #define ALT_4      (0xfb+OFFSET)
 #define ALT_5      (0xfc+OFFSET)
 #define ALT_6      (0xfd+OFFSET)
-#define ALT_7      (0xfe+OFFSET)
+#define ALT_7      (0xfe +OFFSET)
 #define ALT_8      (0xff+OFFSET)
 #define ALT_9      (0x80+OFFSET)
 #define ALT_0      (0x81+OFFSET)

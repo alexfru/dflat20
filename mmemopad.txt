@@ -1,0 +1,7 @@
+-dosh
+-Wall
+-DBUILD_FULL_DFLAT
+-o memopad.exe -map memopad.map
+memopad.c dialogs.c menus.c
+scdos.c
+ldflat.a

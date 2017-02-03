@@ -17,14 +17,18 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
+#ifndef __SMALLER_C__
 #include <dos.h>
 #include <process.h>
 #include <conio.h>
 #include <bios.h>
-#include <ctype.h>
 #include <io.h>
-#include <sys\types.h>
-#include <sys\stat.h>
+#else
+#include "scdos.h"
+#endif
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <time.h>
 #include <setjmp.h>
 

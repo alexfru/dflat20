@@ -397,7 +397,11 @@ static void ShellDOS(WINDOW wnd)
     printf("To return to %s, execute the DOS exit command.",
                     DFlatApplication);
     fflush(stdout);
+#ifdef __SMALLER_C__
+    system("");
+#else
     spawnl(P_WAIT, getenv("COMSPEC"), NULL);
+#endif
     if (SCREENHEIGHT != cfg.ScreenLines)
         SetScreenHeight(cfg.ScreenLines);
     SwitchCursor();

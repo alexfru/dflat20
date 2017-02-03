@@ -1,0 +1,69 @@
+How to compile D-Flat and MemoPad for DOS with Smaller C.
+
+-1. Get Smaller C (with sources) and get it to successfully compile a
+    hello-world app. See https://github.com/alexfru/SmallerC.
+
+
+ 0. Recompile Smaller C (core compiler only) to support larger C source files.
+    Do (beware, a long command line follows)
+
+    > smlrcc smlrc.c -o smlrcbig[.exe] -DMAX_IDENT_TABLE_LEN=16384 -DSYNTAX_STACK_MAX=8192 -DMAX_CASES=257 -DSTACK_SIZE=256
+
+    Then replace your smlrc[.exe] with smlrcbig[.exe].
+
+
+  1. Compile D-Flat and MemoPad.
+     Do
+
+     > smlrcc @mldflat.txt
+     > smlrcc @mmemopad.txt
+
+     This should produce files ldflat.a and memopad.exe.
+     In principle, you can now run memopad.exe in DOS, but without help file.
+
+
+  2. Compile help file tools (huffc and fixhelp) and generate memopad.hlp.
+
+  2.1. If you're doing it in DOS
+       Do
+
+       > smlrcc @mhuffc.txt
+       > smlrcc @mfixhelp.txt
+
+       This should produce files huffc.exe and fixhelp.exe.
+       Then do
+
+       > huffc.exe memopad.txt memopad.hlp
+       > fixhelp.exe memopad
+
+       This should produce memopad.hlp for memopad.exe.
+
+  2.2. If you're doing it in Windows
+       Do
+
+       > smlrcc -DBUILD_FULL_DFLAT -o huffc.exe huffc.c htree.c
+       > smlrcc -DBUILD_FULL_DFLAT -o fixhelp.exe fixhelp.c decomp.c
+
+       This should produce files huffc.exe and fixhelp.exe.
+       Then do
+
+       > huffc.exe memopad.txt memopad.hlp
+       > fixhelp.exe memopad
+
+       This should produce memopad.hlp for memopad.exe.
+
+  2.3. If you're doing it in Linux (I haven't tested this on Linux yet)
+       Do
+
+       > smlrcc -DBUILD_FULL_DFLAT -o huffc huffc.c htree.c
+       > smlrcc -DBUILD_FULL_DFLAT -o fixhelp fixhelp.c decomp.c
+
+       This should produce files huffc and fixhelp.
+       Then do
+
+       > ./huffc memopad.txt memopad.hlp
+       > ./fixhelp memopad
+
+       This should produce memopad.hlp for memopad.exe.
+
+  3. Done! You got memopad.exe and memopad.hlp and can run MemoPad in DOS.

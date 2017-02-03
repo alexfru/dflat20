@@ -1,0 +1,5 @@
+-dosh
+-Wall
+-DBUILD_FULL_DFLAT
+-o huffc.exe
+huffc.c htree.c
