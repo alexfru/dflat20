@@ -68,4 +68,3 @@ void MessageLog(WINDOW wnd)
 }
 
 #endif
-

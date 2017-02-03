@@ -56,4 +56,3 @@ ClassDef(  EDITOR,      EDITBOX, EditorProc,	  0			 )
 /* ---------- pseudo classes to create enums, etc. ---------- */
 ClassDef(  TITLEBAR,    -1,      NULL,            0          )
 ClassDef(  DUMMY,       -1,      NULL,            HASBORDER  )
-

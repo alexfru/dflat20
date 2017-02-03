@@ -23,4 +23,3 @@ void scroll_window(WINDOW, RECT, int);
 #define videochar(x,y) (GetVideoChar(x,y) & 255)
 
 #endif
-

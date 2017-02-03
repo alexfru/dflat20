@@ -391,5 +391,3 @@ int CopyCommand(unsigned char *dest, unsigned char *src,
     }
     return (int) (dest - d);
 }
-
-

@@ -596,5 +596,3 @@ void PrepEditMenu(void *w, struct Menu *mnu)
 		}
 	}
 }
-
-

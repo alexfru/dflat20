@@ -280,4 +280,3 @@ void DrawBar(WINDOW wnd,enum VectTypes vt,
     RECT rc = PictureRect(x,y,len,hv);
     SendMessage(wnd, DRAWBAR, (PARAM) &rc, (PARAM) vt);
 }
-

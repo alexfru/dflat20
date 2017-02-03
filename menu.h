@@ -60,5 +60,3 @@ int MenuHeight(struct PopDown *);
 int MenuWidth(struct PopDown *);
 
 #endif
-
-

@@ -29,4 +29,3 @@ extern CLASSDEFS classdefs[];
 #define HASSTATUSBAR 0x8000
 
 #endif
-

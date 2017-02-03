@@ -881,5 +881,3 @@ int TextLineNumber(WINDOW wnd, char *lp)
     }
     return lineno-1;
 }
-
-

@@ -201,5 +201,3 @@ static BOOL IncompleteFilename(char *s)
         return TRUE;
     return FALSE;
 }
-
-

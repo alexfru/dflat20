@@ -289,5 +289,3 @@ static void near vpoke(int far *vp, int c)
 	waitforretrace();
 	*vp = c;
 }
-
-

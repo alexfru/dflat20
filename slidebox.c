@@ -109,4 +109,3 @@ WINDOW SliderBox(int len, char *ttl, char *msg)
     DialogBox(NULL, &SliderBoxDB, FALSE, SliderBoxProc);
     return SliderBoxDB.ctl[1].wnd;
 }
-

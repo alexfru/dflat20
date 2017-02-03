@@ -121,5 +121,3 @@ void SkipApplicationControls(void)
 			break;
 	}
 }
-
-

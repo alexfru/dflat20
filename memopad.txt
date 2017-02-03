@@ -1453,4 +1453,3 @@ Bar Chart
 This window is an example of a bar chart. You 
 can close the window from the [..System Menu]<sysmenu>.
 <end>
-

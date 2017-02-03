@@ -28,5 +28,3 @@ void *GetHelpLine(char *);
 void SeekHelpLine(long, int);
 
 #endif
-
-

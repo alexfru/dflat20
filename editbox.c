@@ -1129,6 +1129,3 @@ static void SetAnchor(WINDOW wnd, int mx, int my)
     wnd->BlkBegCol = wnd->BlkEndCol = mx;
     SendMessage(wnd, PAINT, 0, 0);
 }
-
-
-

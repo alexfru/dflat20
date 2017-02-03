@@ -22,4 +22,3 @@ RECT ClientRect(void *);
 RECT RelativeWindowRect(void *, RECT);
 RECT ClipRectangle(void *, RECT);
 #endif
-

@@ -184,6 +184,3 @@ DIALOGBOX( HelpBox )
     CONTROL(BUTTON,  "<< ~Prev ", 20,  0, 1,  8, ID_PREV)
     CONTROL(BUTTON,  " ~Next >>", 30,  0, 1,  8, ID_NEXT)
 ENDDB
-
-
-

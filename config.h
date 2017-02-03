@@ -47,5 +47,3 @@ void SaveConfig(void);
 FILE *OpenConfig(char *);
 
 #endif
-
-

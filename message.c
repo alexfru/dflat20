@@ -643,5 +643,3 @@ BOOL dispatch_message(void)
     }
     return TRUE;
 }
-
-

@@ -61,5 +61,3 @@ void buildtree(void)
         treect++;
     }
 }
-
-

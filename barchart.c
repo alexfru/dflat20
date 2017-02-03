@@ -72,4 +72,3 @@ void BarChart(WINDOW pwnd)
     }
     SendMessage(Bwnd, SETFOCUS, TRUE, 0);
 }
-

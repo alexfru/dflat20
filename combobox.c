@@ -125,4 +125,3 @@ void PutComboListText(WINDOW wnd, enum commands cmd, char *text)
         SendMessage(lwnd, ADDTEXT, (PARAM) text, 0);
     }
 }
-

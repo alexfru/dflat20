@@ -201,4 +201,3 @@ int EditorProc(WINDOW wnd, MESSAGE msg, PARAM p1, PARAM p2)
     }
     return BaseWndProc(EDITOR, wnd, msg, p1, p2);
 }
-

@@ -119,5 +119,3 @@ DEFMENU(SystemMenu)
         SELECTION("~Close",    ID_SYSCLOSE,    CTRL_F4,   0 )
     ENDPOPDOWN
 ENDMENU
-
-

@@ -86,4 +86,3 @@ int ButtonProc(WINDOW wnd, MESSAGE msg, PARAM p1, PARAM p2)
     }
     return BaseWndProc(BUTTON, wnd, msg, p1, p2);
 }
-

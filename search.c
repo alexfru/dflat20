@@ -166,4 +166,3 @@ void SearchNext(WINDOW wnd)
 {
     SearchTextBox(wnd, TRUE);
 }
-

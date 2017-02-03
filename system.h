@@ -170,4 +170,3 @@ typedef enum window_class    {
 } CLASS;
 
 #endif
-

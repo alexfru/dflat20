@@ -108,4 +108,3 @@ void SeekHelpLine(long offset, int bit)
 		in8 <<= bit;
     }
 }
-

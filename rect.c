@@ -92,4 +92,3 @@ RECT ClipRectangle(void *wnd, RECT rc)
             rc = subRectangle(rc, ClientRect(wnd));
     return subRectangle(rc, sr);
 }
-

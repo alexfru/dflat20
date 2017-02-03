@@ -25,4 +25,3 @@ int BoxProc(WINDOW wnd, MESSAGE msg, PARAM p1, PARAM p2)
     }
     return BaseWndProc(BOX, wnd, msg, p1, p2);
 }
-

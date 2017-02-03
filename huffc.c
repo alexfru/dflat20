@@ -116,4 +116,3 @@ static void outbit(FILE *fo, int bit)
     out8 = (out8 << 1) | bit;
     ct8++;
 }
-

@@ -82,4 +82,3 @@ struct keys keys[] = {
 	{ALT_Z,		"Alt+Z"},
 	{-1,		NULL}
 };
-

@@ -805,4 +805,3 @@ void SetFocusCursor(WINDOW wnd)
         SendMessage(wnd, KEYBOARD_CURSOR, 1, 0);
     }
 }
-

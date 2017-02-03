@@ -50,4 +50,3 @@ BOOL PasteText(WINDOW wnd, char *SaveTo, unsigned len)
     }
 	return FALSE;
 }
-

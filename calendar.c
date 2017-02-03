@@ -163,4 +163,3 @@ void Calendar(WINDOW pwnd)
 }
 
 #endif
-

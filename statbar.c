@@ -53,5 +53,3 @@ int StatusBarProc(WINDOW wnd, MESSAGE msg, PARAM p1, PARAM p2)
 	}
 	return BaseWndProc(STATUSBAR, wnd, msg, p1, p2);
 }
-
-

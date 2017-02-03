@@ -83,4 +83,3 @@ void InvertCommandToggle(MBAR *mn, int cmd)
     if (pd != NULL)
         pd->Attrib ^= CHECKED;
 }
-

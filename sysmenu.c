@@ -104,4 +104,3 @@ void BuildSystemMenu(WINDOW wnd)
     SendMessage(SystemMenuWnd, SETFOCUS, TRUE, 0);
     SendMessage(SystemMenuWnd, SHOW_WINDOW, 0, 0);
 }
-

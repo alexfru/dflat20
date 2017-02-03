@@ -193,5 +193,3 @@ void BuildPathDisplay(WINDOW wnd)
         SendMessage(lwnd, PAINT, 0, 0);
 	}
 }
-
-

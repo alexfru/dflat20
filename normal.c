@@ -1110,7 +1110,3 @@ BOOL isAncestor(WINDOW wnd, WINDOW awnd)
 	}
 	return FALSE;
 }
-
-
-
-

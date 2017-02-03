@@ -63,4 +63,3 @@ WINDOW WatchIcon(void)
                     VISIBLE | HASBORDER | SHADOW | SAVESELF);
     return wnd;
 }
-

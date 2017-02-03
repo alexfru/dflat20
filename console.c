@@ -290,5 +290,3 @@ int getdisk(void)
 	return cd;
 }
 #endif
-
-

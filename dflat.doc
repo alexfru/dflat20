@@ -1346,5 +1346,3 @@ MAXTEXTLEN    DFLAT.H 65000   Maximum text buffer
 EDITLEN       DFLAT.H  1024   Starting length for multiline EDITBOX
 ENTRYLEN      DFLAT.H   256   Starting length for single-line EDITBOX
 GROWLENGTH    DFLAT.H    64   EDITBOX buffers grow by this much
-
-

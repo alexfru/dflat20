@@ -209,4 +209,3 @@ int MsgWidth(char *msg)
     }
     return min(max(strlen(msg),w), SCREENWIDTH-10);
 }
-

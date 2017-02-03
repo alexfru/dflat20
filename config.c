@@ -529,4 +529,3 @@ void SetReverseColor(WINDOW wnd)
     foreground = SelectForeground(wnd);
     background = SelectBackground(wnd);
 }
-
