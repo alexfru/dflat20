@@ -1,0 +1,8 @@
+D-Flat Windowing System Version 20
+
+This is public domain code. You may use it in your applications
+without restriction. You may freely distribute source code. It
+would be nice if you would give credit to Dr. Dobb's Journal as
+the original publisher of the source code.
+
+(extracted from readme.doc)
