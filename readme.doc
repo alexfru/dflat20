@@ -39,6 +39,12 @@ Type this command:
 
     C>make /fmakefile.bcc
 
+========== (OPEN) WATCOM C ============
+
+To build with Watcom C 8.0 or Open Watcom C 1.9, type this command
+
+    C>wmake /f makefile.wat
+
 =======================================================
 
 D-Flat uses Compressed help files. It uses an adaptation of the
