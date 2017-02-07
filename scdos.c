@@ -1,3 +1,9 @@
+/*
+  Select non-standard functionality commonly available in C compilers
+  for DOS in <dos.h>, <dir.h>, <conio.h>, <bios.h>, <string.h>, which
+  is not (yet?) provided by Smaller C's library.
+*/
+
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
