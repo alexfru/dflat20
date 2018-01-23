@@ -3,7 +3,7 @@
 #include "dflat.h"
 
 /* ----- set focus to the next sibling ----- */
-void SetNextFocus()
+void SetNextFocus(void)
 {
     if (inFocus != NULL)    {
         WINDOW wnd1 = inFocus, pwnd;
@@ -32,7 +32,7 @@ void SetNextFocus()
 }
 
 /* ----- set focus to the previous sibling ----- */
-void SetPrevFocus()
+void SetPrevFocus(void)
 {
     if (inFocus != NULL)    {
         WINDOW wnd1 = inFocus, pwnd;
